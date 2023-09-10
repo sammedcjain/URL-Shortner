@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <!-- Bootstrap CSS Link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS */
+        .card{
+          height:auto;
+          width:600px;
+          margin-bottom:60px;
+          font-size:20px;
+        }
+        body{
+          background:black;
+          height:auto;
+        }
+
+        .carousel{
+          text-align: center;
+          color:white;
+        }
+        .text1{
+          font-size: 35px;
+          color:#007bff;
+        }
+        #carouselExampleControls{
+          padding-top:50px;
+          padding-bottom: 50px;
+          margin-left: 20px;
+          margin-right:20px;
+        }
+        .container {
+            margin-top: 10px;
+        }
+
+        .header {
+            background-color:#007bff;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .header-logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header-links {
+          font-size: 20px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .header-links li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #007bff;
+            padding: 25px 0;
+            font-size: 28px;
+            color:black;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .image_link{
+          width:auto;
+          height:25px;
+        }
+
+        .small_font{
+          font-size: 25px;
+        }
+        a{
+        color:black;
+        }
+        a:hover{
+          color:white;
+          text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-links {
+                display:none;
+            }
+            .text1{
+              font-size: 25px;
+            }
+            .text2{
+              font-size: 20px;
+            }
+            .small_font{
+              font-size: 14px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/3858/3858629.png" alt="Logo" class="header-logo">
+                <h1 style="color:black;">Shortened</h1>
+            </div>
+            <ul class="header-links">
+                <li><a href="#carouselExampleControls">Intro</a></li>
+                <li><a href="#shorten-url">Shorten URL</a></li>
+                <li><a href="#foot">About</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <img class="image_link" src="Daco_5096184.png" alt="Logo">
+      <div class="text1">
+         Shortened
+      </div>
+      <span class="small_font"> Simple URL Shortner </span>
+    </div>
+    <div class="carousel-item">
+      <img class="image_link" src="Daco_5096184.png" alt="Logo">
+      <div class="text1">
+        Shorten any URL
+      </div>
+      <span class="small_font"> Easy to Use with simple & sleek design </span>
+    </div>
+    <div class="carousel-item">
+      <img class="image_link" src="Daco_5096184.png" alt="Logo">
+      <div class="text1 text2">
+        Customize the shortned URL
+      </div>
+      <span class="small_font"> Customize with your own back link</span>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<!-- Input Card -->
+<div class="container d-flex justify-content-center align-items-center mt-2">
+  <div class="card" id="shorten-url">
+    <div class="card-header">
+      Shorten URL
+    </div>
+    <div class="card-body">
+      <!-- Display flash messages here -->
+      <% if (messages.error) { %>
+        <div class="alert alert-danger">
+          <%= messages.error %>
+        </div>
+      <% } %>
+
+      <form id="shortenForm" action="/insert" method="POST">
+        <div class="form-group">
+          <label for="originalURL">Original URL:</label>
+          <input type="url" class="form-control" id="originalURL" name="originalURL" placeholder="Enter the URL to shorten" required>
+        </div>
+        <div class="form-group">
+          <label for="customShortenedURL">Custom Shortened URL (optional):</label>
+          <input type="text" class="form-control" id="customShortenedURL" name="customShortenedURL" placeholder="Enter a custom shortened URL">
+        </div>
+        <button type="submit" class="btn btn-primary">Shorten</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer mt-4" id="foot">
+        <p>@7vikmv</p>
+        <a href=""> <i class="fa-solid fa-envelope fa-lg" style="color: #000000;"></i> </a>
+        <a href=""><i class="fa-brands fa-linkedin fa-lg" style="color: #000000;"></i><a>
+        <a href=""><i class="fa-brands fa-square-github fa-lg" style="color: #000000;"></i></a>
+        <a href=""><i class="fa-brands fa-instagram fa-lg" style="color: #000000;"></i> </a>
+
+
+    </footer>
+
+    <!-- Bootstrap JS and jQuery Links (Required for Modal and Carousel) -->
+    <script src="https://kit.fontawesome.com/1465e7da9e.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
