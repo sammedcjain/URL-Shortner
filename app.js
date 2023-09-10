@@ -6,7 +6,7 @@ const shortid = require('shortid');
 const session = require('express-session');
 const flash = require('express-flash');
 const app = express();
-
+require('dotenv').config();
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"));
 app.use(session({ secret: 'your-secret-key' }));
@@ -14,8 +14,9 @@ app.use(flash());
 app.set('view engine', 'ejs');
 require('dotenv').config()
 app.use(bodyParser.urlencoded({extended:true}));
-
-mongoose.connect('mongodb://127.0.0.1:27017/urlDB',{useNewUrlParser:true});
+const mongoDBPassword = process.env.MONGODB_PASSWORD;
+const mongoURL = 'mongodb+srv://sammedcjain:' + encodeURIComponent(mongoDBPassword) + '@cluster0.gldyajt.mongodb.net/urlDB';
+mongoose.connect(mongoURL, { useNewUrlParser: true });
 
 const urlSchema = new mongoose.Schema({
   original:String,
